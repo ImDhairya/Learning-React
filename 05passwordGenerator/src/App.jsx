@@ -2,11 +2,10 @@ import { useState, useCallback, useEffect, useRef } from "react";
 // import "./App.css";
 
 function App() {
-  const [length, setLength] = useState(8);
+  const [length, setLength] = useState(16);
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
-  const [change123, setChange] = useState("");
 
   //ref hook
   const passwordRef = useRef(null);
@@ -24,8 +23,7 @@ function App() {
     }
 
     setPassword(pass);
-
-  }, [length, numberAllowed, charAllowed, change123, setPassword]);
+  }, [length, numberAllowed, charAllowed, setPassword]);
 
   const copyPasswordToClipboard = useCallback(() => {
     passwordRef.current?.select();
@@ -33,11 +31,9 @@ function App() {
     window.navigator.clipboard.writeText(password);
   }, [password]);
 
-  
-
   useEffect(() => {
     passwordGenerator();
-  }, [length, numberAllowed, charAllowed, change123, passwordGenerator]);
+  }, [length, numberAllowed, charAllowed, passwordGenerator]);
 
   return (
     <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500">
@@ -60,11 +56,12 @@ function App() {
           copy{" "}
         </button>
       </div>
+
       <div className="flex text-sm gap-x-2">
         <div className="flex items-center gap-x-1">
           <input
             type="range"
-            min={6}
+            min={16}
             max={100}
             value={length}
             className="cursor-pointer"
@@ -74,6 +71,7 @@ function App() {
           />
           <label>Length : {length}</label>
         </div>
+
         <div className="flex items-center gap-x-1">
           <input
             type="checkbox"
@@ -96,15 +94,16 @@ function App() {
             }}
           />
           <label htmlFor="characterInput">Characters</label>
-
         </div>
       </div>
-          <button
-            onClick={passwordGenerator}
-            className="outline-none mt-4 p-6  bg-blue-700 rounded-lg  text-white px-3 py-0.5  shrink-0">
-            {" "}
-            Change Password{" "}
-          </button>
+
+      <button
+        onClick={passwordGenerator}
+        className="outline-none mt-4 p-6  bg-blue-700 rounded-lg  text-white px-3 py-0.5  shrink-0"
+      >
+        {" "}
+        Change Password{" "}
+      </button>
     </div>
   );
 }

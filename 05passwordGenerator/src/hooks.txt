@@ -1,0 +1,27 @@
+what will the use of each hook is ? (for your own reference for future projects)
+
+1) useState => used to add const [length, setLength] = useState('5');
+
+this is used so we can declare variables 
+
+2) useCallback => used to memorized version of callback only changes if one of the dependencies have changed, we have used it in passwordGenerator function. 
+
+  const passwordGenerator = useCallback(() => {
+    let pass = "";
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    if (numberAllowed) str += "0123456789";
+    if (charAllowed) str += "!@#$%^&*-_+=[]{}~`";
+
+    for (let i = 1; i <= length; i++) {
+      let char = Math.floor(Math.random() * str.length + 1);
+
+      pass += str.charAt(char);
+    }
+
+    setPassword(pass);
+  }, [length, numberAllowed, charAllowed, setPassword]);
+
+
+3) useEffect => this is used to see the dom change lets say we make a counter and it changes its value then we need to show it to the do aswell then we will use this to actually change the value in website.
+
+4) useRef => This creates mutable object wiht .current property initialized to passed argument  
