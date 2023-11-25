@@ -6,7 +6,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const { setUser } = useContext(UserContext);
-
+// use context will give proper context what is that exact thing that we wnat to get a value from 
   const handleSubmit = (e) => {
     e.preventDefault();
     setUser({ username, password });

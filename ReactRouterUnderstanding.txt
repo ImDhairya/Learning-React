@@ -1,0 +1,22 @@
+This is for you to understand the begining of react Router that we are using and what we find so difficult to understand, here's simplified understanding for you.
+
+React router is nothing but an exact same app that you are making with header, footer, home page in your app.jsx alright. 
+
+In react router we do not import app.jsx file in our sourcer supreme index.html file
+
+so what do we do instead??
+
+we will do this ->  
+  1) we will remove <App /> from index.html file
+  2) we will instead make this 
+  # <RouterProvider router = {router} /> #
+  in our index.html file replacing <App />. 
+  3) and what is that router you may ask???
+   it is this.
+
+
+
+
+  4) Creating an Layout.jsx file with this view 
+
+  Reference to the link to our understanding from video - https://youtu.be/VJov5QWEKE4?t=1582
